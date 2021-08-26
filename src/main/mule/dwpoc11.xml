@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="67d69c1b-d4f0-49d1-a856-02c2cf073668" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="dwpoc11Flow" doc:id="7db576f0-ae69-4923-834d-5e88f3a3fe40" >
+		<http:listener doc:name="listner" doc:id="aec66c01-568d-4a84-ab46-1cee7ff54665" config-ref="HTTP_Listener_config" path="/level11"/>
+		<logger level="INFO" doc:name="Logger" doc:id="c4e54cb8-7c03-455b-a05d-f93978a48b20" message="#[payload]"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="da46398e-5be6-4241-9027-d8d7a3934314" />
+		<logger level="INFO" doc:name="Logger" doc:id="ee597169-d636-4cb6-9718-141b86ff4b82" />
+	</flow>
+</mule>
